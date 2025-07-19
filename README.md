@@ -168,6 +168,6 @@ Only listed emails will be able to view the order list.
 ## 🧑‍💻 Developer Info
 
 Built by [Adwitiya Khare](https://adwitiyakhare.vercel.dev)  
-View the GitHub repository: [yourusername/ecommerce-app](https://github.com/AdwitiyaKhare/ecommerce-notify)
+View the GitHub repository: [AdwitiyaKhare/ecommerce-notify](https://github.com/AdwitiyaKhare/ecommerce-notify)
 
 ---
