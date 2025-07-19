@@ -6,6 +6,7 @@ import ProductList from "./components/ProductList";
 import Footer from "./components/Footer";
 import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const BACKEND_URL = "http://localhost:5000";
 
@@ -77,6 +78,11 @@ export default function App() {
           />
           <Route path="/success" element={<Success />} />
           <Route path="/cancel" element={<Cancel />} />
+          <Route
+            path="/admin-dashboard"
+            element={<AdminDashboard user={user} />}
+          />
+          ;
         </Routes>
       </div>
     </div>

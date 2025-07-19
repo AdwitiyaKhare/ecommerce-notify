@@ -1,4 +1,6 @@
 const Header = ({ user, onLogin, onLogout, darkMode, setDarkMode }) => {
+  const adminEmails = import.meta.env.VITE_ADMIN_EMAILS?.split(",") || [];
+
   return (
     <div className="flex flex-col md:flex-row justify-between items-center mb-10">
       <h1 className="text-4xl font-extrabold tracking-tight mb-4 md:mb-0">
@@ -17,6 +19,16 @@ const Header = ({ user, onLogin, onLogout, darkMode, setDarkMode }) => {
             <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">
               {user.email}
             </p>
+
+            {adminEmails.includes(user.email) && (
+              <a
+                href="/admin-dashboard"
+                className="block mb-2 text-blue-600 dark:text-blue-400 text-sm underline hover:text-blue-800"
+              >
+                Admin Dashboard
+              </a>
+            )}
+
             <button
               onClick={onLogout}
               className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded w-full"

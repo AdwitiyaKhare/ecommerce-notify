@@ -53,7 +53,7 @@ app.post(
         paymentId: payment_intent,
       });
 
-      // Removed EmailJS call (email will be sent via frontend)
+      // Email is handled in frontend
     }
 
     res.json({ received: true });
@@ -61,18 +61,28 @@ app.post(
 );
 
 // Now add middlewares AFTER webhook
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Session & Passport
+// Fixed: session config to preserve login state after Stripe redirect
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      secure: false, // set to true if using HTTPS
+      sameSite: "lax", // allows Stripe redirect to keep session
+    },
   })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 
