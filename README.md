@@ -1,157 +1,92 @@
-```markdown
-# 🛍️ E-Commerce Frontend
+# 🛍️ Full Stack E-Commerce App (React + Node.js)
 
-A React-based frontend for a simple e-commerce store with integrated payment using Stripe and Google OAuth login. Users can browse products, buy them via Stripe Checkout, and receive confirmation emails via EmailJS.
-
----
-
-## 🔥 Features
-
-- Browse a list of digital products
-- Google OAuth login
-- Stripe checkout integration
-- Email confirmation via EmailJS
-- Responsive light/dark theme toggle
-- Auto-redirect on success/cancel pages
-
----
-
-## 🖥️ Preview
-
-[Light Mode Screenshot](./screenshots/home-light.png)
-
-[Dark Mode Screenshot](./screenshots/home-dark.png)
-
----
-
-## 🛠️ Tech Stack
-
-- **React (Vite)**
-- **Tailwind CSS**
-- **React Router**
-- **EmailJS**
-- **Stripe (frontend integration)**
-
----
-
-## 📁 Project Structure
-
-```
-
-client/
-├── components/
-│   ├── Header.jsx
-│   ├── Footer.jsx
-│   ├── ProductCard.jsx
-│   └── ProductList.jsx
-├── pages/
-│   ├── Success.jsx
-│   └── Cancel.jsx
-├── App.jsx
-├── main.jsx
-└── index.css
-
-````
-
----
-
-## ⚙️ Environment Variables
-
-Create a `.env` file in the `client/` folder based on the following:
-
-```env
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-VITE_EMAILJS_USER_ID=your_emailjs_user_id
-````
-
----
-
-## 📦 Installation
-
-```bash
-cd client
-npm install
-npm run dev
-```
-
----
-
-````
-
----
-
-### ✅ `server/README.md`
-
-```markdown
-# ⚙️ E-Commerce Backend (Node.js + Express)
-
-This is the backend API server for the e-commerce app that supports:
-
-- Google OAuth user authentication
-- Stripe payments
-- Order storage in MongoDB
-- Admin access to order history
+A full-stack e-commerce platform where users can browse and buy digital products. It uses **Google OAuth** for login, **Stripe** for payments, **MongoDB** to store orders, and **EmailJS** to send confirmation emails upon successful checkout.
 
 ---
 
 ## 🧠 Features
 
-- Secure Stripe checkout session creation
-- MongoDB order persistence via Mongoose
-- Admin-protected route to view all orders
-- Google OAuth 2.0 login with Passport.js
-- Stripe Webhook to store successful purchases
-- CORS-enabled for frontend communication
+- 🛒 Browse and purchase digital products
+- 🔐 Google OAuth login
+- 💳 Stripe checkout
+- 📬 Confirmation email via EmailJS
+- 🌙 Light/dark theme toggle
+- 🔁 Auto-redirect on success or cancel
 
 ---
 
-## 🛠️ Tech Stack
+## 📸 App Screenshots
 
-- **Node.js + Express**
-- **MongoDB + Mongoose**
-- **Stripe SDK**
-- **Passport.js (Google Strategy)**
-- **EmailJS (sent from frontend)**
+![Home Light Mode](./screenshots/home-light.png)
+![Home Dark Mode](./screenshots/home-dark.png)
 
----
-
-## 🧾 Project Structure
-
-````
-
-server/
-├── config/
-│   └── passport.js
-├── models/
-│   ├── Order.js
-│   └── User.js
-├── routes/
-│   ├── auth.js
-│   ├── admin.js
-│   └── payment.js
-├── utils/
-│   └── sendEmail.js
-├── app.js
-└── .env
-
-````
+![Payment Sucess](./screenshots/payment-success.png)
+![Payment Cancelled](./screenshots/payment-cancelled.png)
 
 ---
 
-## ⚙️ Environment Variables
+## ⚙️ Tech Stack
 
-Create a `.env` file in the `server/` folder with the following:
+### Frontend
+- React (Vite)
+- Tailwind CSS
+- React Router
+- EmailJS
+- Stripe.js
+
+### Backend
+- Node.js
+- Express
+- MongoDB + Mongoose
+- Passport.js (Google OAuth)
+- Stripe SDK
+
+---
+
+## 🗂️ Project Structure
+
+```
+project-root/
+├── client/               # React Frontend
+│   ├── components/       # Reusable UI components
+│   ├── pages/            # Success & Cancel pages
+│   ├── App.jsx           # Main app
+│   ├── main.jsx          # Entry point
+│   └── index.css         # Tailwind config
+├── server/               # Node.js Backend
+│   ├── config/           # Passport setup
+│   ├── models/           # Mongoose models
+│   ├── routes/           # Auth, Payment, Admin APIs
+│   ├── utils/            # Email sending util
+│   ├── app.js            # Server entry
+│   └── .env              # Environment file (ignored)
+├── screenshots/          # 💡 Add UI screenshots here
+└── README.md
+```
+
+---
+
+## 🔐 Environment Variables
+
+### 📁 `client/.env`
+
+```env
+VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+VITE_EMAILJS_USER_ID=your_emailjs_user_id
+```
+
+### 📁 `server/.env`
 
 ```env
 PORT=5000
 CLIENT_URL=http://localhost:5173
 
-MONGO_URI=your_mongo_connection_string
-SESSION_SECRET=some_random_secret
+MONGO_URI=your_mongodb_connection_string
+SESSION_SECRET=your_session_secret
 
-GOOGLE_CLIENT_ID=your_google_oauth_client_id
-GOOGLE_CLIENT_SECRET=your_google_oauth_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 
 STRIPE_SECRET_KEY=your_stripe_secret_key
 STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
@@ -161,11 +96,20 @@ EMAILJS_TEMPLATE_ID=your_emailjs_template_id
 EMAILJS_USER_ID=your_emailjs_user_id
 
 ADMIN_EMAILS=admin1@example.com,admin2@example.com
-````
+```
 
 ---
 
 ## 📦 Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/ecommerce-app.git
+cd ecommerce-app
+```
+
+### 2. Backend Setup
 
 ```bash
 cd server
@@ -173,18 +117,57 @@ npm install
 npm run dev
 ```
 
-> Make sure MongoDB is running locally or connected via Atlas.
+> ⚠️ Make sure MongoDB is running locally or use MongoDB Atlas.
+
+### 3. Frontend Setup
+
+```bash
+cd client
+npm install
+npm run dev
+```
+
+The frontend will run at [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## ⚡ Webhook Setup (Optional for Local Testing)
+## ⚡ Stripe Webhook Setup (Optional)
 
-If testing Stripe Webhooks locally, use:
+If you want backend to automatically store orders on successful Stripe payments:
 
 ```bash
 stripe listen --forward-to localhost:5000/webhook
 ```
 
-This ensures successful order storage on payment completion.
+> Requires Stripe CLI. This will enable webhook listener to insert orders into MongoDB.
+
+---
+
+## 🔐 Admin Access (View Orders)
+
+To access `/admin/orders`, make sure your email is included in:
+
+```env
+ADMIN_EMAILS=admin1@example.com,admin2@example.com
+```
+
+Only listed emails will be able to view the order list.
+
+---
+
+## 💡 Next Steps / Enhancements
+
+- Add product images and descriptions
+- Show user’s past purchases
+- Admin dashboard UI to manage orders
+- Deployment on Vercel (client) + Render (server) + MongoDB Atlas
+- Add product management (CRUD)
+
+---
+
+## 🧑‍💻 Developer Info
+
+Built by [Adwitiya Khare](https://adwitiyakhare.vercel.dev)  
+View the GitHub repository: [yourusername/ecommerce-app](https://github.com/AdwitiyaKhare/ecommerce-notify)
 
 ---
