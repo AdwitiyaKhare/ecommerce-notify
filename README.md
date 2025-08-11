@@ -1,21 +1,21 @@
-# 🛍️ Full Stack E-Commerce App (React + Node.js)
+# Full Stack E-Commerce App (React + Node.js)
 
 A full-stack e-commerce platform where users can browse and buy digital products. It uses **Google OAuth** for login, **Stripe** for payments, **MongoDB** to store orders, and **EmailJS** to send confirmation emails upon successful checkout.
 
 ---
 
-## 🧠 Features
+## Features
 
-- 🛒 Browse and purchase digital products
-- 🔐 Google OAuth login
-- 💳 Stripe checkout
-- 📬 Confirmation email via EmailJS
-- 🌙 Light/dark theme toggle
-- 🔁 Auto-redirect on success or cancel
+- Browse and purchase digital products
+- Google OAuth login
+- Stripe checkout
+- Confirmation email via EmailJS
+- Light/dark theme toggle
+- Auto-redirect on success or cancel
 
 ---
 
-## 📸 App Screenshots
+## App Screenshots
 
 ![Home Light Mode](./screenshots/home-light.png)
 ![Home Dark Mode](./screenshots/home-dark.png)
@@ -25,9 +25,10 @@ A full-stack e-commerce platform where users can browse and buy digital products
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 ### Frontend
+
 - React (Vite)
 - Tailwind CSS
 - React Router
@@ -35,6 +36,7 @@ A full-stack e-commerce platform where users can browse and buy digital products
 - Stripe.js
 
 ### Backend
+
 - Node.js
 - Express
 - MongoDB + Mongoose
@@ -43,7 +45,7 @@ A full-stack e-commerce platform where users can browse and buy digital products
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 project-root/
@@ -66,9 +68,9 @@ project-root/
 
 ---
 
-## 🔐 Environment Variables
+## Environment Variables
 
-### 📁 `client/.env`
+### `client/.env`
 
 ```env
 VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
@@ -76,7 +78,7 @@ VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
 VITE_EMAILJS_USER_ID=your_emailjs_user_id
 ```
 
-### 📁 `server/.env`
+### `server/.env`
 
 ```env
 PORT=5000
@@ -100,7 +102,7 @@ ADMIN_EMAILS=admin1@example.com,admin2@example.com
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### 1. Clone the Repository
 
@@ -117,7 +119,7 @@ npm install
 npm run dev
 ```
 
-> ⚠️ Make sure MongoDB is running locally or use MongoDB Atlas.
+> Make sure MongoDB is running locally or use MongoDB Atlas.
 
 ### 3. Frontend Setup
 
@@ -131,7 +133,7 @@ The frontend will run at [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## ⚡ Stripe Webhook Setup (Optional)
+## Stripe Webhook Setup (Optional)
 
 If you want backend to automatically store orders on successful Stripe payments:
 
@@ -143,7 +145,7 @@ stripe listen --forward-to localhost:5000/webhook
 
 ---
 
-## 🔐 Admin Access (View Orders)
+## Admin Access (View Orders)
 
 To access `/admin/orders`, make sure your email is included in:
 
@@ -155,7 +157,7 @@ Only listed emails will be able to view the order list.
 
 ---
 
-## 💡 Next Steps / Enhancements
+## Next Steps / Enhancements
 
 - Add product images and descriptions
 - Show user’s past purchases
@@ -165,7 +167,7 @@ Only listed emails will be able to view the order list.
 
 ---
 
-## 🧑‍💻 Developer Info
+## Developer Info
 
 Built by [Adwitiya Khare](https://adwitiyakhare.vercel.dev)  
 View the GitHub repository: [AdwitiyaKhare/ecommerce-notify](https://github.com/AdwitiyaKhare/ecommerce-notify)
