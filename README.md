@@ -169,7 +169,7 @@ Only listed emails will be able to view the order list.
 
 ## Developer Info
 
-Built by [Adwitiya Khare](https://adwitiyakhare.vercel.dev)  
+Built by [Adwitiya Khare](https://adwitiyakhare.vercel.app)  
 View the GitHub repository: [AdwitiyaKhare/ecommerce-notify](https://github.com/AdwitiyaKhare/ecommerce-notify)
 
 ---
