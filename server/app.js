@@ -70,15 +70,17 @@ app.use(
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Fixed: session config to preserve login state after Stripe redirect
+app.set("trust proxy", 1); // trust first proxy (needed for Render/Vercel HTTPS)
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: true, // set to true if using HTTPS
-      sameSite: "lax", // allows Stripe redirect to keep session
+      secure: process.env.NODE_ENV === "production", // true in production, false locally
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      httpOnly: true, // prevents JS access
     },
   })
 );
