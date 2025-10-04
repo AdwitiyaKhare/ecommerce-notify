@@ -3,7 +3,7 @@ import emailjs from "@emailjs/browser";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export default function Success() {
   const location = useLocation();

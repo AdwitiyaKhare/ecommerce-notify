@@ -5,6 +5,11 @@ dotenv.config();
 
 const router = express.Router();
 
+// ✅ Health check route so frontend knows backend is awake
+router.get("/ping", (req, res) => {
+  res.json({ status: "ok", message: "Backend is awake 🚀" });
+});
+
 // Route to start Google OAuth flow
 router.get(
   "/google",
@@ -17,7 +22,7 @@ router.get(
   passport.authenticate("google", {
     failureRedirect: `${process.env.CLIENT_URL}/`,
     successRedirect: `${process.env.CLIENT_URL}/`,
-    session: true, // explicitly state this if session is used
+    session: true,
   })
 );
 
