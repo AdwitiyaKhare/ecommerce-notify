@@ -84,8 +84,8 @@ app.use(
     saveUninitialized: false,
     proxy: true,
     cookie: {
-      secure: process.env.NODE_ENV === "production", // true in production, false locally
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: true, // true in production, false locally
+      sameSite: "none",
       httpOnly: true, // prevents JS access
     },
   })
