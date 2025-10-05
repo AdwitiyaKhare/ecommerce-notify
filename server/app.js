@@ -64,11 +64,7 @@ app.post(
 
 app.use(
   cors({
-    origin: [
-      process.env.CLIENT_URL,
-      "https://stripe-mart-bmy39f5ee-adwitiya-khares-projects.vercel.app",
-      "https://stripe-mart-git-main-adwitiya-khares-projects.vercel.app/",
-    ],
+    origin: process.env.CLIENT_URL,
     credentials: true,
   })
 );
@@ -84,8 +80,8 @@ app.use(
     saveUninitialized: false,
     proxy: true,
     cookie: {
-      secure: true, // true in production, false locally
-      sameSite: "none",
+      secure: process.env.NODE_ENV === "production", // true in production, false locally
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       httpOnly: true, // prevents JS access
     },
   })
