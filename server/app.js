@@ -88,6 +88,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    proxy: true,
     cookie: {
       secure: process.env.NODE_ENV === "production", // true in production, false locally
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
