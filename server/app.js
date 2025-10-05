@@ -61,20 +61,14 @@ app.post(
 );
 
 // Now add middlewares AFTER webhook
-const allowedOrigins = process.env.CLIENT_URL.split(",").map((url) =>
-  url.trim()
-);
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps or curl) or matching allowed origins
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: [
+      process.env.CLIENT_URL,
+      "https://stripe-mart-bmy39f5ee-adwitiya-khares-projects.vercel.app",
+      "https://stripe-mart-git-main-adwitiya-khares-projects.vercel.app/",
+    ],
     credentials: true,
   })
 );
