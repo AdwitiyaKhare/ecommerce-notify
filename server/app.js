@@ -61,9 +61,20 @@ app.post(
 );
 
 // Now add middlewares AFTER webhook
+const allowedOrigins = process.env.CLIENT_URL.split(",").map((url) =>
+  url.trim()
+);
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl) or matching allowed origins
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
@@ -81,8 +92,6 @@ app.use(
       secure: process.env.NODE_ENV === "production", // true in production, false locally
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       httpOnly: true, // prevents JS access
-      domain:
-        process.env.NODE_ENV === "production" ? ".onrender.com" : undefined,
     },
   })
 );
