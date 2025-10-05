@@ -81,6 +81,8 @@ app.use(
       secure: process.env.NODE_ENV === "production", // true in production, false locally
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       httpOnly: true, // prevents JS access
+      domain:
+        process.env.NODE_ENV === "production" ? ".onrender.com" : undefined,
     },
   })
 );
